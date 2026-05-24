@@ -142,11 +142,11 @@ src/
 
 ### Light Mode
 
-![Light Mode](./assets/screenshots/light-mode.png)
+![Light Mode](./assets/screenshots/lightmode.png)
 
 ### Dark Mode
 
-![Dark Mode](./assets/screenshots/dark-mode.png)
+![Dark Mode](./assets/screenshots/darkmode.png)
 
 ### Shopping Redux Screen
 
