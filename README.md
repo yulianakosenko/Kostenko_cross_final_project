@@ -142,15 +142,15 @@ src/
 
 ### Light Mode
 
-![Light Mode](./assets/screenshots/lightmode.png)
+![Light Mode](./screenshots/lightmode.png)
 
 ### Dark Mode
 
-![Dark Mode](./assets/screenshots/darkmode.png)
+![Dark Mode](./screenshots/darkmode.png)
 
 ### Shopping Redux Screen
 
-![Shopping Redux](./assets/screenshots/shopping-redux.png)
+![Shopping Redux](./screenshots/shopping-redux.png)
 
 ### Meal Plan
 
