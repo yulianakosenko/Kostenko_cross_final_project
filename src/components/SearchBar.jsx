@@ -16,46 +16,36 @@ export default function SearchBar({
 value,
 onChangeText,
 }) {
-const { theme } = useContext(ThemeContext);
-
-return (
-<View
-style={[
-styles.container,
-{
-backgroundColor:
-theme === "light"
-? COLORS.surface
-: COLORS.darkSurface,
-},
-]}
-> <Search
-     size={18}
-     color={COLORS.textMuted}
-   />
-
-
-  <TextInput
-    value={value}
-    onChangeText={onChangeText}
-    placeholder="Search healthy meals"
-    placeholderTextColor={COLORS.textMuted}
-    selectionColor={COLORS.primary}
-    cursorColor={COLORS.primary}
-    underlineColorAndroid="transparent"
-    style={[
-      styles.input,
-      {
-        color:
-          theme === "light"
-            ? COLORS.text
-            : COLORS.darkText,
-      },
-    ]}
-  />
-</View>
-
-);
+  const { theme } = useContext(ThemeContext);
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor:
+            theme === "light" ? COLORS.surface : COLORS.darkSurface,
+        },
+      ]}
+    >
+     
+      <Search size={18} color={COLORS.textMuted} />
+      <TextInput
+        value={value}
+        onChangeText={onChangeText}
+        placeholder="Search healthy meals"
+        placeholderTextColor={COLORS.textMuted}
+        selectionColor={COLORS.primary}
+        cursorColor={COLORS.primary}
+        underlineColorAndroid="transparent"
+        style={[
+          styles.input,
+          {
+            color: theme === "light" ? COLORS.text : COLORS.darkText,
+          },
+        ]}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

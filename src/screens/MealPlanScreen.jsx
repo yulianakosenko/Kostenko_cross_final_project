@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
@@ -17,6 +17,12 @@ export default function MealPlanScreen({ navigation, route }) {
 
   const currentDays = route?.params?.days || "7";
 
+  // Optimization with useCallback
+  const renderMealDay = useCallback(
+    ({ item }) => <MealDayCard meals={item.meals} title={item.title} />,
+    [],
+  );
+
   return (
     <View style={styles.container}>
       <AppStatusBar />
@@ -26,8 +32,13 @@ export default function MealPlanScreen({ navigation, route }) {
       <FlatList
         data={mealDays}
         keyExtractor={(item) => item.id.toString()}
+        renderItem={renderMealDay}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
+        initialNumToRender={5}
+        maxToRenderPerBatch={5}
+        windowSize={5}
+        removeClippedSubviews
         ListHeaderComponent={
           <>
             <View style={styles.metricsRow}>
@@ -58,9 +69,6 @@ export default function MealPlanScreen({ navigation, route }) {
             </View>
           </>
         }
-        renderItem={({ item }) => (
-          <MealDayCard meals={item.meals} title={item.title} />
-        )}
       />
 
       <View style={styles.buttonWrapper}>

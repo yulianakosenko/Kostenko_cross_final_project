@@ -1,8 +1,28 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+
+import {
+  Dimensions,
+  Image,
+  LayoutAnimation,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  UIManager,
+  View,
+} from "react-native";
 
 import { COLORS, SHADOW } from "../constants/theme";
 
 const { width } = Dimensions.get("window");
+
+// Enable LayoutAnimation on Android
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const mealImages = {
   Breakfast: "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
@@ -13,36 +33,51 @@ const mealImages = {
 };
 
 export default function MealDayCard({ meals, title }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpand = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    setExpanded(!expanded);
+  };
+
   return (
     <View style={styles.dayContainer}>
-      <Text style={styles.dayTitle}>{title}</Text>
+      <TouchableOpacity activeOpacity={0.9} onPress={toggleExpand}>
+        <View style={styles.headerRow}>
+          <Text style={styles.dayTitle}>{title}</Text>
 
-      {meals.map((meal, index) => (
-        <View key={index} style={styles.card}>
-          <Image
-            source={{
-              uri:
-                mealImages[meal.type] ||
-                "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
-            }}
-            style={styles.image}
-          />
+          <Text style={styles.arrow}>{expanded ? "▲" : "▼"}</Text>
+        </View>
+      </TouchableOpacity>
 
-          <View style={styles.content}>
-            <Text style={styles.imageType}>{meal.type}</Text>
+      {expanded &&
+        meals.map((meal, index) => (
+          <View key={index} style={styles.card}>
+            <Image
+              source={{
+                uri:
+                  mealImages[meal.type] ||
+                  "https://images.unsplash.com/photo-1490645935967-10de6ba17061",
+              }}
+              style={styles.image}
+            />
 
-            <Text style={styles.imageTitle}>{meal.name}</Text>
+            <View style={styles.content}>
+              <Text style={styles.imageType}>{meal.type}</Text>
 
-            <View style={styles.infoRow}>
-              <View style={styles.badge}>
-                <Text style={styles.badgeText}>{meal.kcal} kcal</Text>
+              <Text style={styles.imageTitle}>{meal.name}</Text>
+
+              <View style={styles.infoRow}>
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>{meal.kcal} kcal</Text>
+                </View>
+
+                <Text style={styles.grams}>{meal.grams} g</Text>
               </View>
-
-              <Text style={styles.grams}>{meal.grams} g</Text>
             </View>
           </View>
-        </View>
-      ))}
+        ))}
     </View>
   );
 }
@@ -52,14 +87,30 @@ const styles = StyleSheet.create({
     marginBottom: 28,
   },
 
+  headerRow: {
+    flexDirection: "row",
+
+    justifyContent: "space-between",
+
+    alignItems: "center",
+
+    marginBottom: 18,
+  },
+
   dayTitle: {
     fontSize: 28,
 
     fontWeight: "700",
 
     color: COLORS.text,
+  },
 
-    marginBottom: 18,
+  arrow: {
+    fontSize: 20,
+
+    color: COLORS.primaryDark,
+
+    fontWeight: "700",
   },
 
   card: {

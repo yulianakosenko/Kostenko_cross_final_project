@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 const MealCard = ({ title, image, onPress }) => {
+  console.count("MealCard rendered");
+
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image source={{ uri: image }} style={styles.image} />
@@ -10,7 +12,6 @@ const MealCard = ({ title, image, onPress }) => {
     </TouchableOpacity>
   );
 };
-
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
@@ -31,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MealCard;
+export default React.memo(MealCard);
