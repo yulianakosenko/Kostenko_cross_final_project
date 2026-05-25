@@ -25,6 +25,9 @@ A premium React Native meal planning application with AI-inspired meal generatio
 * Responsive premium mobile UI
 * Expandable animated meal cards
 * FlatList performance optimization
+* Nutrition Insights analytics screen
+* Daily calories / protein / carbs / fats tracking
+* Progress visualization UI
 
 ---
 
@@ -295,11 +298,29 @@ backend/
 
 ![Animation Opened](./screenshots/animation_opened.png)
 
+### Nutrition Insights
+
+![Nutrition Insights](./screenshots/nutrition.png)
+
 ---
 
 ## GitHub Repository
 
-:contentReference[oaicite:0]{index=0}
+
+https://github.com/yulianakosenko/Kostenko_cross_final_project
+
+---
+
+---
+
+## Future Improvements
+
+* Real AI-generated nutrition calculations
+* User authentication
+* Cloud synchronization
+* Personalized nutrition recommendations
+* Weekly nutrition analytics
+* Advanced meal planning AI
 
 ---
 
