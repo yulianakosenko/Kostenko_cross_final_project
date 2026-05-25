@@ -331,6 +331,26 @@ export default function HomeScreen({ navigation }) {
 
         <View style={styles.bottomSection}>
           <PrimaryButton title="✨ Generate Plan" onPress={handleGenerate} />
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#22C55E",
+              padding: 16,
+              borderRadius: 16,
+              marginTop: 20,
+              alignItems: "center",
+            }}
+            onPress={() => navigation.navigate("NutritionInsights")}
+          >
+            <Text
+              style={{
+                color: "#FFFFFF",
+                fontWeight: "700",
+                fontSize: 16,
+              }}
+            >
+              Nutrition Insights
+            </Text>
+          </TouchableOpacity>
 
           <View style={styles.privacyRow}>
             <Ionicons
