@@ -1,4 +1,3 @@
-````md
 # AI Meal Planner
 
 A premium React Native meal planning application with AI-inspired meal generation, performance optimization, Context API theme management, Redux Toolkit shopping state, shopping planning, and nutrition tracking.
@@ -307,4 +306,3 @@ backend/
 ## Author
 
 Yuliya Kostenko
-````
