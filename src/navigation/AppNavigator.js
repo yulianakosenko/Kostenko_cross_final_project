@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-
+import NutritionInsightsScreen from "../screens/NutritionInsightsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -86,6 +86,10 @@ export default function AppNavigator() {
           options={{
             title: "Meal Details",
           }}
+        />
+        <Stack.Screen
+          name="NutritionInsights"
+          component={NutritionInsightsScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
